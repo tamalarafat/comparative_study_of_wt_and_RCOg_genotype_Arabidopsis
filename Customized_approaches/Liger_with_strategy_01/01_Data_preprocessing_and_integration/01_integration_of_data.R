@@ -91,8 +91,8 @@ RCO_data_10E <- RCO_data_10E[genes_to_keep, ]
 # COL - 1 E
 ###
 
-# First replicate - COL 1E - total cells 4850; filter out genes that are not detected in at least 13 cells
-COL_1E <- CreateSeuratObject(counts = COL_data_1E, project = "COL_1E", min.cells = 10, min.features = 200)
+# First replicate - COL 1E - total cells 4850;
+COL_1E <- CreateSeuratObject(counts = COL_data_1E, project = "COL_1E", min.features = 200)
 
 # Add metadata information to the seurat object
 COL_1E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "WT-COL-1", "WT", "Leaf")
@@ -112,8 +112,8 @@ COL_1E <- subset(COL_1E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 COL_1E <- NormalizeData(COL_1E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-COL_1E <- FindVariableFeatures(COL_1E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+COL_1E <- FindVariableFeatures(COL_1E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count table from the seurat object
 COL_W1 <- GetAssayData(COL_1E, assay = "RNA", slot = "counts")
@@ -125,8 +125,8 @@ colnames(COL_W1) <- paste("C1", colnames(COL_W1), sep = "_")
 # COL - 2 E
 ###
 
-# First replicate - COL 2E - total cells 10760; filter out genes that are not detected in at least 21 cells
-COL_2E <- CreateSeuratObject(counts = COL_data_2E, project = "COL_2E", min.cells = 27, min.features = 200)
+# First replicate - COL 2E - total cells 10760; 
+COL_2E <- CreateSeuratObject(counts = COL_data_2E, project = "COL_2E", min.features = 200)
 
 # Add metadata information to the seurat object
 COL_2E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "WT-COL-2", "WT", "Leaf")
@@ -146,8 +146,8 @@ COL_2E <- subset(COL_2E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 COL_2E <- NormalizeData(COL_2E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-COL_2E <- FindVariableFeatures(COL_2E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+COL_2E <- FindVariableFeatures(COL_2E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count table from the seurat object
 COL_W2 <- GetAssayData(COL_2E, assay = "RNA", slot = "counts")
@@ -159,8 +159,8 @@ colnames(COL_W2) <- paste("C2", colnames(COL_W2), sep = "_")
 # COL - 3 E
 ###
 
-# First replicate - COL 3E - total cells 4100; filter out genes that are not detected in at least 8 cells
-COL_3E <- CreateSeuratObject(counts = COL_data_3E, project = "COL_3E", min.cells = 6, min.features = 200)
+# First replicate - COL 3E - total cells 4100;
+COL_3E <- CreateSeuratObject(counts = COL_data_3E, project = "COL_3E", min.features = 200)
 
 # Add metadata information to the seurat object
 COL_3E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "WT-COL-3", "WT", "Leaf")
@@ -180,8 +180,8 @@ COL_3E <- subset(COL_3E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 COL_3E <- NormalizeData(COL_3E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-COL_3E <- FindVariableFeatures(COL_3E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+COL_3E <- FindVariableFeatures(COL_3E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count table from the seurat object
 COL_W3 <- GetAssayData(COL_3E, assay = "RNA", slot = "counts")
@@ -193,8 +193,8 @@ colnames(COL_W3) <- paste("C3", colnames(COL_W3), sep = "_")
 # COL - 5 E
 ###
 
-# First replicate - COL 5E - total cells 8420; filter out genes that are not detected in at least 18 cells
-COL_5E <- CreateSeuratObject(counts = COL_data_5E, project = "COL_5E", min.cells = 17, min.features = 200)
+# First replicate - COL 5E - total cells 8420;
+COL_5E <- CreateSeuratObject(counts = COL_data_5E, project = "COL_5E", min.features = 200)
 
 # Add metadata information to the seurat object
 COL_5E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "WT-COL-5", "WT", "Leaf")
@@ -214,8 +214,8 @@ COL_5E <- subset(COL_5E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 COL_5E <- NormalizeData(COL_5E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-COL_5E <- FindVariableFeatures(COL_5E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+COL_5E <- FindVariableFeatures(COL_5E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count table from the seurat object
 COL_W5 <- GetAssayData(COL_5E, assay = "RNA", slot = "counts")
@@ -224,13 +224,22 @@ COL_W5 <- GetAssayData(COL_5E, assay = "RNA", slot = "counts")
 colnames(COL_W5) <- paste("C5", colnames(COL_W5), sep = "_")
 
 
+###
+# Intersection of highly variable genes among replicates - WT Arabidopsis thaliana
+###
+
+# Lets find common variable features for the replicates of A. thaliana
+wt_hvgs = Reduce(intersect, list(COL_1E@assays$RNA@var.features, COL_2E@assays$RNA@var.features, COL_3E@assays$RNA@var.features, COL_5E@assays$RNA@var.features))
+
+fileGenerator(wt_hvgs, fileName = "Shared_highly_variable_genes_between_replicates_WT_AT.txt")
+
 
 ###
 # RCOg - 3 E
 ###
 
-# Total cells 4550; filter out genes that are not detected in at least 9 cells
-RCO_3E <- CreateSeuratObject(counts = RCO_data_3E, project = "RCO_3E", min.cells = 9, min.features = 200)
+# Total cells 4550;
+RCO_3E <- CreateSeuratObject(counts = RCO_data_3E, project = "RCO_3E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_3E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-3", "RCO", "Leaf")
@@ -250,8 +259,8 @@ RCO_3E <- subset(RCO_3E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_3E <- NormalizeData(RCO_3E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_3E <- FindVariableFeatures(RCO_3E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_3E <- FindVariableFeatures(RCO_3E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G3 <- GetAssayData(RCO_3E, assay = "RNA", slot = "counts")
@@ -264,8 +273,8 @@ colnames(RCO_G3) <- paste("R3", colnames(RCO_G3), sep = "_")
 # RCOg - 5 E
 ###
 
-# Total cells 7000; filter out genes that are not detected in at least 14 cells
-RCO_5E <- CreateSeuratObject(counts = RCO_data_5E, project = "RCO_5E", min.cells = 14, min.features = 200)
+# Total cells 7000; 
+RCO_5E <- CreateSeuratObject(counts = RCO_data_5E, project = "RCO_5E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_5E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-5", "RCO", "Leaf")
@@ -285,8 +294,8 @@ RCO_5E <- subset(RCO_5E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_5E <- NormalizeData(RCO_5E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_5E <- FindVariableFeatures(RCO_5E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_5E <- FindVariableFeatures(RCO_5E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G5 <- GetAssayData(RCO_5E, assay = "RNA", slot = "counts")
@@ -299,8 +308,8 @@ colnames(RCO_G5) <- paste("R5", colnames(RCO_G5), sep = "_")
 # RCOg - 6 E
 ###
 
-# Total cells 4550; filter out genes that are not detected in at least 16 cells
-RCO_6E <- CreateSeuratObject(counts = RCO_data_6E, project = "RCO_6E", min.cells = 16, min.features = 200)
+# Total cells 4550; 
+RCO_6E <- CreateSeuratObject(counts = RCO_data_6E, project = "RCO_6E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_6E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-6", "RCO", "Leaf")
@@ -320,8 +329,8 @@ RCO_6E <- subset(RCO_6E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_6E <- NormalizeData(RCO_6E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_6E <- FindVariableFeatures(RCO_6E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_6E <- FindVariableFeatures(RCO_6E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G6 <- GetAssayData(RCO_6E, assay = "RNA", slot = "counts")
@@ -334,8 +343,8 @@ colnames(RCO_G6) <- paste("R6", colnames(RCO_G6), sep = "_")
 # RCOg - 7 E
 ###
 
-# Total cells 4550; filter out genes that are not detected in at least 9 cells
-RCO_7E <- CreateSeuratObject(counts = RCO_data_7E, project = "RCO_7E", min.cells = 16, min.features = 200)
+# Total cells 4550;
+RCO_7E <- CreateSeuratObject(counts = RCO_data_7E, project = "RCO_7E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_7E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-7", "RCO", "Leaf")
@@ -355,8 +364,8 @@ RCO_7E <- subset(RCO_7E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_7E <- NormalizeData(RCO_7E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_7E <- FindVariableFeatures(RCO_7E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_7E <- FindVariableFeatures(RCO_7E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G7 <- GetAssayData(RCO_7E, assay = "RNA", slot = "counts")
@@ -369,8 +378,8 @@ colnames(RCO_G7) <- paste("R7", colnames(RCO_G7), sep = "_")
 # RCOg - 8 E
 ###
 
-# Total cells 4550; filter out genes that are not detected in at least 9 cells
-RCO_8E <- CreateSeuratObject(counts = RCO_data_8E, project = "RCO_8E", min.cells = 3, min.features = 200)
+# Total cells 4550;
+RCO_8E <- CreateSeuratObject(counts = RCO_data_8E, project = "RCO_8E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_8E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-8", "RCO", "Leaf")
@@ -390,8 +399,8 @@ RCO_8E <- subset(RCO_8E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_8E <- NormalizeData(RCO_8E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_8E <- FindVariableFeatures(RCO_8E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_8E <- FindVariableFeatures(RCO_8E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G8 <- GetAssayData(RCO_8E, assay = "RNA", slot = "counts")
@@ -404,8 +413,8 @@ colnames(RCO_G8) <- paste("R8", colnames(RCO_G8), sep = "_")
 # RCOg - 10 E
 ###
 
-# Total cells 4550; filter out genes that are not detected in at least 9 cells
-RCO_10E <- CreateSeuratObject(counts = RCO_data_10E, project = "RCO_10E", min.cells = 2, min.features = 200)
+# Total cells 1000;
+RCO_10E <- CreateSeuratObject(counts = RCO_data_10E, project = "RCO_10E", min.features = 200)
 
 # Add metadata information to the seurat object
 RCO_10E[[c("Species", "Replicates", "Genotype", "Tissue")]] <- c("Thaliana", "RCOg-10", "RCO", "Leaf")
@@ -425,14 +434,34 @@ RCO_10E <- subset(RCO_10E, subset = percent.mt < 5 & percent.pt < 10)
 # Normalize the data - log-normalization
 RCO_10E <- NormalizeData(RCO_10E, verbose = FALSE)
 
-# Find a set of highly avariable genes - 2000 HVGs
-RCO_10E <- FindVariableFeatures(RCO_10E, selection.method = "vst", nfeatures = 2000)
+# Find a set of highly avariable genes - 3000 HVGs
+RCO_10E <- FindVariableFeatures(RCO_10E, selection.method = "vst", nfeatures = 3000)
 
 # Extract the count matrix
 RCO_G10 <- GetAssayData(RCO_10E, assay = "RNA", slot = "counts")
 
 # Add a string (identifier) with the barcodes
 colnames(RCO_G10) <- paste("R10", colnames(RCO_G10), sep = "_")
+
+
+###
+# Intersection of highly variable genes among replicates - WT Arabidopsis thaliana
+###
+
+# Lets find common variable features for the replicates of A. thaliana
+RCOg_hvgs = Reduce(intersect, list(RCO_3E@assays$RNA@var.features, RCO_5E@assays$RNA@var.features, RCO_6E@assays$RNA@var.features, RCO_7E@assays$RNA@var.features, RCO_8E@assays$RNA@var.features, RCO_10E@assays$RNA@var.features))
+
+fileGenerator(RCOg_hvgs, fileName = "Shared_highly_variable_genes_between_replicates_RCOg_AT.txt")
+
+
+###
+# combine the highly variable genes between the genotypes
+###
+
+HVGs_combined = union(wt_hvgs, RCOg_hvgs) # Total = 2294
+
+fileGenerator(HVGs_combined, "Seurat_3000_HVG_intersect_reps_union_genotypes_without_mincells.txt")
+
 
 # Integration of the replicates - find anchors
 anchFeatures <- SelectIntegrationFeatures(object.list = list(COL_1E, COL_2E, COL_3E, COL_5E, RCO_3E, RCO_5E, RCO_6E, RCO_7E, RCO_8E, RCO_10E))
@@ -473,7 +502,7 @@ AT_genotypes@norm.data <- list(WC1 = COL_1E@assays$RNA@data,
                                RG10 = RCO_10E@assays$RNA@data)
 
 # Selecting a set of highly variable genes
-# AT_genotypes <- selectGenes(AT_genotypes, num.genes = 2000, do.plot = FALSE)
+# AT_genotypes <- selectGenes(AT_genotypes, num.genes = 3000, do.plot = FALSE)
 
 AT_genotypes@var.genes <- anchFeatures
 
